@@ -1,11 +1,18 @@
-import { Input } from '@/components/atoms';
+import { useState } from 'react';
+
+import { Button, Modal, Typography } from '@/components/atoms';
+
 import style from './MainPage.module.scss';
 
 const MainPage = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
     <div className={style.page}>
-      <Input placeholder="asdasdasd" />
-      <Input placeholder="asdasdasd" error="123123" />
+      <Button onClick={() => setIsOpen(true)}>показать модалку</Button>
+      <Modal isOpen={isOpen} onClose={() => setIsOpen(false)}>
+        <Typography>Модалка</Typography>
+      </Modal>
     </div>
   );
 };

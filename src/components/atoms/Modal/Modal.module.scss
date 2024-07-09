@@ -1,0 +1,68 @@
+@import '@/styles/variables.scss';
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding: 0px 16px 48px 16px;
+  overflow: auto;
+  transition: $transition;
+  opacity: 0;
+  pointer-events: none;
+  cursor: pointer;
+
+  &_open {
+    opacity: 1;
+    background-color: rgba(0, 0, 0, 0.5);
+    pointer-events: auto;
+
+    .body {
+      transform: scale(1);
+    }
+  }
+}
+
+.body {
+  position: relative;
+  margin: 150px auto 0px auto;
+  transition: $transition;
+  border-radius: 4px;
+  background-color: rgba(37, 14, 54, 1);
+  padding: 52px 8px 8px 8px;
+  cursor: auto;
+  transform: scale(0.5);
+  max-width: 434px;
+  border: 1px solid rgba(75, 41, 100, 1);
+}
+
+.close {
+  background-color: transparent;
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  top: 8px;
+  right: 8px;
+  cursor: pointer;
+  border: none;
+
+  svg path {
+    fill: rgba(196, 196, 196, 1);
+    transition: $transition;
+  }
+
+  &:hover {
+    svg path {
+      fill: rgba(203, 225, 255, 1);
+    }
+  }
+}
+
+.title {
+  min-height: 48px;
+}
+
+.stop_scroll {
+  overflow: hidden;
+}
