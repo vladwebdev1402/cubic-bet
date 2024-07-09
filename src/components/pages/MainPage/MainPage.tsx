@@ -1,9 +1,10 @@
+import clsx from 'clsx';
+
 import { GameCube, Typography } from '@/components/atoms';
 import { BetOptions } from '@/components/moleculus';
 
 import { useMainPage } from './useMainPage';
 import style from './MainPage.module.scss';
-import clsx from 'clsx';
 
 const MainPage = () => {
   const {
@@ -23,18 +24,20 @@ const MainPage = () => {
           <Typography variant="title">Войдите, чтобы продолжить</Typography>
         )}
         {isAuth && (
-          <Typography variant="title">
-            {resultRoll !== null
-              ? `Результат броска кубика: ${resultRoll}`
-              : 'Сделайте ставку'}
-          </Typography>
-        )}
-        {resultGame && rollPrice && (
-          <Typography className={style.subtitle}>
-            {resultGame === 'win'
-              ? `Вы выиграли ${rollPrice} TND!`
-              : 'Повезёт в слеудюищй раз'}
-          </Typography>
+          <div>
+            <Typography variant="title">
+              {resultRoll !== null
+                ? `Результат броска кубика: ${resultRoll}`
+                : 'Сделайте ставку'}
+            </Typography>
+            {resultGame && rollPrice && (
+              <Typography className={style.subtitle}>
+                {resultGame === 'win'
+                  ? `Вы выиграли ${rollPrice} TND!`
+                  : 'Повезёт в слеудюищй раз'}
+              </Typography>
+            )}
+          </div>
         )}
       </div>
 

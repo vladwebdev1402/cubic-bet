@@ -14,6 +14,7 @@ type State = {
 type Action = {
   signIn: (data: AuthData) => Promise<string>;
   getUser: () => void;
+  signOut: () => void;
 };
 
 export const useAuthStore = create<State & Action>((set) => ({
@@ -53,5 +54,11 @@ export const useAuthStore = create<State & Action>((set) => ({
     } finally {
       set({ isSignLoading: false });
     }
+  },
+
+  signOut: async () => {
+    LocalStorageManager.removeIsLodined();
+    set({ isAuth: false });
+    set({ user: null });
   },
 }));

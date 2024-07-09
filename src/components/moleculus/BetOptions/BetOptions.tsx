@@ -23,12 +23,16 @@ const BetOptions: FC<BetOptionsProps> = ({
   const [customBet, setCustomBet] = useState('');
   const [sizeBet, setSizeBet] = useState<SelectValue>(bets[0]);
   const [variantBet, setVariantBet] = useState<VariantBet>(null);
+
+  const isNotEnoughBalance =
+    variantBet === 'custom'
+      ? currentBalance - Number(sizeBet.value) * 3 < 0
+      : currentBalance - Number(sizeBet.value) * 2 < 0;
+
   const startDisabled =
     variantBet === null ||
     (variantBet === 'custom' && customBet === '') ||
-    (variantBet === 'custom'
-      ? currentBalance - Number(sizeBet.value) * 3 < 0
-      : currentBalance - Number(sizeBet.value) * 2 < 0) ||
+    isNotEnoughBalance ||
     disabledOptions;
 
   const onCustomNumberChange = (value: string) => {

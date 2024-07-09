@@ -1,49 +1,38 @@
-import { useState } from 'react';
-
 import { Button, Modal, Typography } from '@/components/atoms';
-import { AuthData, AuthForm } from '@/components/moleculus';
-import { useAuthStore, useGameStore } from '@/store';
+import { AuthForm } from '@/components/moleculus';
 
 import style from './Header.module.scss';
-import { LocalStorageManager } from '@/api';
+import { useHeader } from './useHeader';
 
 const Header = () => {
-  const balance = useGameStore((state) => state.balance);
-  const isAuth = useAuthStore((state) => state.isAuth);
-  const signIn = useAuthStore((state) => state.signIn);
-  const error = useAuthStore((state) => state.error);
-  const isSignLoading = useAuthStore((state) => state.isSignLoading);
-  const isLogined = LocalStorageManager.checkIsLogined();
-  const [isOpen, setIsOpen] = useState(false);
-
-  const onAuthSubmit = async (data: AuthData) => {
-    const status = await signIn(data);
-    if (status === 'success') {
-      setIsOpen(false);
-    }
-  };
+  const { state, actions } = useHeader();
 
   return (
     <>
       <header className={style.header}>
         <div className={style.container}>
           <Typography variant="title"> Test Game</Typography>
-          {isAuth && <Typography>{balance} (TND)</Typography>}
-          {!isAuth && !isLogined && (
+          {!state.isAuth && !state.isLogined && (
             <div className={style.buttons}>
-              <Button onClick={() => setIsOpen(true)}>Вход</Button>
-              <Button onClick={() => setIsOpen(true)}>Регистрация</Button>
+              <Button onClick={actions.openModal}>Вход</Button>
+              <Button onClick={actions.openModal}>Регистрация</Button>
+            </div>
+          )}
+          {state.isAuth && (
+            <div className={style.buttons}>
+              <Typography>{state.balance} (TND)</Typography>
+              <Button onClick={actions.signOut}>Выйти</Button>
             </div>
           )}
         </div>
       </header>
-      <Modal isOpen={isOpen} onClose={() => setIsOpen(false)}>
-        <AuthForm onSubmit={onAuthSubmit}>
-          <Button className={style.auth_button} loading={isSignLoading}>
+      <Modal isOpen={state.isOpen} onClose={actions.closeModal}>
+        <AuthForm onSubmit={actions.onAuthSubmit}>
+          <Button className={style.auth_button} loading={state.isSignLoading}>
             Войти
           </Button>
         </AuthForm>
-        {error && <div>{error}</div>}
+        {state.error && <div>{state.error}</div>}
       </Modal>
     </>
   );
