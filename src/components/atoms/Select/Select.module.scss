@@ -32,7 +32,6 @@
   align-items: center;
   justify-content: center;
   transition: $transition;
-  border: 1px solid rgba(56, 147, 255, 1);
 }
 
 .body {
@@ -43,6 +42,7 @@
   flex-direction: column;
   width: 100%;
   border-radius: 6px;
+  border: 1px solid rgba(56, 147, 255, 1);
 }
 
 .option {

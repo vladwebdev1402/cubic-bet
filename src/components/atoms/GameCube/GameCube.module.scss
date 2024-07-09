@@ -1,0 +1,195 @@
+$count-rotate: 8;
+$duration: 5s;
+
+.cube {
+  position: relative;
+  width: 92px;
+  height: 92px;
+  transform-style: preserve-3d;
+  transition: all 0.3s ease-in;
+}
+
+.default {
+  animation: default-rotate 5s infinite ease-in-out;
+}
+
+.rotate-1 {
+  animation: rotate-1 $duration ease-in-out 0s 1 normal forwards;
+}
+
+.rotate-2 {
+  animation: rotate-2 $duration ease-in-out 0s 1 normal forwards;
+}
+
+.rotate-3 {
+  animation: rotate-3 $duration ease-in-out 0s 1 normal forwards;
+}
+
+.rotate-4 {
+  animation: rotate-4 $duration ease-in-out 0s 1 normal forwards;
+}
+
+.rotate-5 {
+  animation: rotate-5 $duration ease-in-out 0s 1 normal forwards;
+}
+
+.rotate-6 {
+  animation: rotate-6 $duration ease-in-out 0s 1 normal forwards;
+}
+
+.face {
+  position: absolute;
+  width: 92px;
+  height: 92px;
+  border-radius: 5px;
+  padding: 18px 18px;
+  font-size: 20px;
+  font-weight: bold;
+  color: black;
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+.point_wrapper {
+  position: relative;
+}
+
+.point {
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  background-color: black;
+  border-radius: 100%;
+
+  &_top {
+    top: 0;
+  }
+
+  &_left {
+    left: 0;
+  }
+
+  &_bottom {
+    bottom: 0;
+  }
+
+  &_center {
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  &_right {
+    right: 0;
+  }
+
+  &_center_center {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  &_top_right {
+    top: 0;
+    right: 0;
+  }
+}
+
+.front {
+  transform: rotateY(0deg) translateZ(46px);
+  background: white;
+}
+.back {
+  transform: rotateY(180deg) translateZ(46px);
+  background: white;
+}
+.left {
+  transform: rotateY(-90deg) translateZ(46px);
+  background: white;
+}
+.right {
+  transform: rotateY(90deg) translateZ(46px);
+  background: white;
+}
+.top {
+  transform: rotateX(90deg) translateZ(46px);
+  background: white;
+}
+.bottom {
+  transform: rotateX(-90deg) translateZ(46px);
+  background: white;
+}
+
+@keyframes default-rotate {
+  0% {
+    transform: rotateX(0deg);
+  }
+  50% {
+    transform: rotateX(360deg) rotateY(0deg);
+  }
+  to {
+    transform: rotateX(360deg) rotateY(360deg);
+  }
+}
+
+@keyframes rotate-1 {
+  from {
+    transform: rotateX(0deg) rotateY(0deg);
+  }
+  to {
+    transform: rotateX(calc($count-rotate * 360deg))
+      rotateY(calc($count-rotate * 360deg));
+  }
+}
+
+@keyframes rotate-2 {
+  from {
+    transform: rotateX(0deg) rotateY(0deg);
+  }
+  to {
+    transform: rotateX(calc($count-rotate * 360deg + 90deg))
+      rotateY(calc($count-rotate * 360deg));
+  }
+}
+
+@keyframes rotate-3 {
+  from {
+    transform: rotateX(0deg) rotateY(0deg);
+  }
+  to {
+    transform: rotateX(calc($count-rotate * 360deg))
+      rotateY(calc($count-rotate * 360deg + 90deg));
+  }
+}
+
+@keyframes rotate-4 {
+  from {
+    transform: rotateX(0deg) rotateY(0deg);
+  }
+
+  to {
+    transform: rotateX(calc($count-rotate * 360deg))
+      rotateY(calc($count-rotate * 360deg - 90deg));
+  }
+}
+
+@keyframes rotate-5 {
+  from {
+    transform: rotateX(0deg) rotateY(0deg);
+  }
+
+  to {
+    transform: rotateX(calc($count-rotate * 360deg - 90deg))
+      rotateY(calc($count-rotate * 360deg));
+  }
+}
+
+@keyframes rotate-6 {
+  from {
+    transform: rotateX(0deg) rotateY(0deg);
+  }
+
+  to {
+    transform: rotateX(calc($count-rotate * 360deg + 180deg))
+      rotateY(calc($count-rotate * 360deg));
+  }
+}

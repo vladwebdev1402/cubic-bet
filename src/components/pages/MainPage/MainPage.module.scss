@@ -1,15 +1,37 @@
-.page {
-  height: 100vh;
-  width: 100vw;
-  background: linear-gradient(
-    268.59deg,
-    #0c0b1e 0.91%,
-    #2a0f3b 51.75%,
-    #0c0b1e 98.52%
-  );
-}
-
 .btn {
   max-width: 320px;
   width: 100%;
+}
+
+.container {
+  max-width: 338px;
+  margin: 0px auto 0 auto;
+}
+
+.title {
+  text-align: center;
+}
+
+.subtitle {
+  margin-top: 8px;
+}
+
+.cube_wrapper {
+  width: 180px;
+  height: 180px;
+  margin: 60px auto 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid rgba(66, 22, 93, 1);
+  border-radius: 5px;
+}
+
+.options {
+  margin-top: 60px;
+}
+
+.start {
+  width: 100%;
+  margin-top: 16px;
 }

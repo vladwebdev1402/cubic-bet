@@ -1,8 +1,14 @@
-import { MainPage } from './components';
+import { Layout, MainPage } from './components';
+
 import './styles/fonts.scss';
 import './styles/reset.scss';
+
 function App() {
-  return <MainPage />;
+  return (
+    <Layout>
+      <MainPage />
+    </Layout>
+  );
 }
 
 export { App };
