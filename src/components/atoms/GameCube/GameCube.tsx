@@ -2,7 +2,6 @@ import { FC } from 'react';
 import clsx from 'clsx';
 
 import { CubeStatus } from './type';
-
 import style from './GameCube.module.scss';
 
 type GameCubeProps = {

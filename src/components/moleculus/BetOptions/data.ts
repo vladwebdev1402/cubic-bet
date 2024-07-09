@@ -6,14 +6,6 @@ export const bets: SelectValue[] = [
     value: '1.00',
   },
   {
-    title: '2.00',
-    value: '2.00',
-  },
-  {
-    title: '3.00',
-    value: '3.00',
-  },
-  {
     title: '5.00',
     value: '5.00',
   },
@@ -23,15 +15,11 @@ export const bets: SelectValue[] = [
   },
 
   {
-    title: '25.00',
-    value: '25.00',
+    title: '15.00',
+    value: '15.00',
   },
   {
-    title: '60.00',
-    value: '60.00',
-  },
-  {
-    title: '100.00',
-    value: '100.00',
+    title: '20.00',
+    value: '20.00',
   },
 ];

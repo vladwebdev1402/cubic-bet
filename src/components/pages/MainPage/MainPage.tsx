@@ -1,31 +1,32 @@
-import { useState } from 'react';
+import { GameCube, Typography } from '@/components/atoms';
+import { BetOptions } from '@/components/moleculus';
 
-import { CubeStatus, GameCube, Typography } from '@/components/atoms';
-import { BetOptions, VariantBet } from '@/components/moleculus';
-
+import { useMainPage } from './useMainPage';
 import style from './MainPage.module.scss';
 
 const MainPage = () => {
-  const [status, setStatus] = useState<CubeStatus>('default');
-
-  const handleStartClick = (
-    sizeBet: number,
-    variantBet: VariantBet,
-    customBet: number,
-  ) => {
-    console.log(sizeBet);
-    console.log(variantBet);
-    console.log(customBet);
-    setStatus('rotate-1');
-  };
+  const { cubeStatus, rollPrice, resultRoll, resultGame, handleStartClick } =
+    useMainPage();
 
   return (
     <div className={style.container}>
-      <Typography variant="title" className={style.title}>
-        Сделайте ставку
-      </Typography>
+      <div className={style.title}>
+        <Typography variant="title">
+          {resultRoll !== null
+            ? `Результат броска кубика: ${resultRoll}`
+            : 'Сделайте ставку'}
+        </Typography>
+        {resultGame && rollPrice && (
+          <Typography className={style.subtitle}>
+            {resultGame === 'win'
+              ? `Вы выиграли ${rollPrice} TND!`
+              : 'Повезёт в слеудюищй раз'}
+          </Typography>
+        )}
+      </div>
+
       <div className={style.cube_wrapper}>
-        <GameCube status={status} />
+        <GameCube status={cubeStatus} />
       </div>
       <div className={style.options}>
         <BetOptions className={style.options} onStart={handleStartClick} />
