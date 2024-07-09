@@ -5,8 +5,14 @@ import { useMainPage } from './useMainPage';
 import style from './MainPage.module.scss';
 
 const MainPage = () => {
-  const { cubeStatus, rollPrice, resultRoll, resultGame, handleStartClick } =
-    useMainPage();
+  const {
+    balance,
+    cubeStatus,
+    rollPrice,
+    resultRoll,
+    resultGame,
+    handleStartClick,
+  } = useMainPage();
 
   return (
     <div className={style.container}>
@@ -29,7 +35,12 @@ const MainPage = () => {
         <GameCube status={cubeStatus} />
       </div>
       <div className={style.options}>
-        <BetOptions className={style.options} onStart={handleStartClick} />
+        <BetOptions
+          className={style.options}
+          onStart={handleStartClick}
+          currentBalance={balance}
+          disabledOptions
+        />
       </div>
     </div>
   );

@@ -12,6 +12,7 @@ export const useMainPage = () => {
   const [resultGame, setResultGame] = useState<'win' | 'loss' | null>(null);
   const [resultRoll, setResultRoll] = useState<number | null>(null);
   const setBalance = useGameStore((state) => state.setBalance);
+  const balance = useGameStore((state) => state.balance);
 
   const handleStartClick = (
     sizeBet: number,
@@ -46,6 +47,7 @@ export const useMainPage = () => {
     rollPrice,
     resultGame,
     resultRoll,
+    balance,
     handleStartClick,
   };
 };

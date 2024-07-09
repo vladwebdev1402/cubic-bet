@@ -3,7 +3,7 @@ import clsx from 'clsx';
 
 import style from './Button.module.scss';
 
-type ButtonProps = {
+export type ButtonProps = {
   theme?: 'violet' | 'green';
   lastIcon?: ReactNode;
   isActive?: boolean;
