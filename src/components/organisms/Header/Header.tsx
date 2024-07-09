@@ -1,22 +1,40 @@
-import { Button, Typography } from '@/components/atoms';
-import { useGameStore } from '@/store';
+import { Button, Modal, Typography } from '@/components/atoms';
+import { AuthForm } from '@/components/moleculus';
 
 import style from './Header.module.scss';
+import { useHeader } from './useHeader';
 
 const Header = () => {
-  const balance = useGameStore((state) => state.balance);
+  const { state, actions } = useHeader();
 
   return (
-    <header className={style.header}>
-      <div className={style.container}>
-        <Typography variant="title"> Test Game</Typography>
-        <Typography>{balance} TND</Typography>
-        {/* <div className={style.buttons}>
-          <Button>Вход</Button>
-          <Button>Регистрация</Button>
-        </div> */}
-      </div>
-    </header>
+    <>
+      <header className={style.header}>
+        <div className={style.container}>
+          <Typography variant="title"> Test Game</Typography>
+          {!state.isAuth && !state.isLogined && (
+            <div className={style.buttons}>
+              <Button onClick={actions.openModal}>Вход</Button>
+              <Button onClick={actions.openModal}>Регистрация</Button>
+            </div>
+          )}
+          {state.isAuth && (
+            <div className={style.buttons}>
+              <Typography>{state.balance} (TND)</Typography>
+              <Button onClick={actions.signOut}>Выйти</Button>
+            </div>
+          )}
+        </div>
+      </header>
+      <Modal isOpen={state.isOpen} onClose={actions.closeModal}>
+        <AuthForm onSubmit={actions.onAuthSubmit}>
+          <Button className={style.auth_button} loading={state.isSignLoading}>
+            Войти
+          </Button>
+        </AuthForm>
+        {state.error && <div>{state.error}</div>}
+      </Modal>
+    </>
   );
 };
 
