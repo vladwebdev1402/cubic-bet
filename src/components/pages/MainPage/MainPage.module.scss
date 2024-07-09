@@ -12,11 +12,15 @@
   text-align: center;
 }
 
-.cubic {
-  width: 130px;
-  height: 130px;
-  background-color: rgb(135, 13, 163);
+.cube_wrapper {
+  width: 180px;
+  height: 180px;
   margin: 60px auto 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid rgba(66, 22, 93, 1);
+  border-radius: 5px;
 }
 
 .options {
