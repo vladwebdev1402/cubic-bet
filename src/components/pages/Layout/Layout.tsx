@@ -1,7 +1,9 @@
 import { FC, ReactNode } from 'react';
 
 import { Header } from '@/components/organisms';
+
 import { useLayout } from './useLayout';
+import style from './Layout.module.scss';
 
 type LayoutProps = {
   children: ReactNode;
@@ -11,9 +13,9 @@ const Layout: FC<LayoutProps> = ({ children }) => {
   useLayout();
 
   return (
-    <div>
+    <div className={style.layout}>
       <Header />
-      {children}
+      <main className={style.page_wrapper}>{children}</main>
     </div>
   );
 };
