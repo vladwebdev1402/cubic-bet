@@ -33,6 +33,7 @@ const Button: FC<ButtonProps> = ({
         style[theme],
         {
           [style.active]: isActive,
+          [style.with_icon]: lastIcon,
         },
         className,
       )}

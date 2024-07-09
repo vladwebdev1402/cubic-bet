@@ -22,8 +22,8 @@
   }
 
   &:disabled {
-    background-color: $gray-light;
     cursor: not-allowed;
+    opacity: 0.3;
   }
 }
 

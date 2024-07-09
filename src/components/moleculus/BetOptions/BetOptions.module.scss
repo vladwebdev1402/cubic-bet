@@ -1,0 +1,33 @@
+.label {
+  margin-bottom: 4px;
+}
+
+.bet_variants {
+  margin-top: 16px;
+}
+
+.body {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.button {
+  flex: 1 0 40%;
+}
+
+.custom {
+  width: 100%;
+}
+
+.input {
+  padding: 4px 5px 4px 6px;
+  width: 22px;
+  height: 22px;
+  font-size: 14px;
+}
+
+.start {
+  width: 100%;
+  margin-top: 16px;
+}
