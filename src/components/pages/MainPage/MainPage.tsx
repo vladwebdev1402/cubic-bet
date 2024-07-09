@@ -3,9 +3,11 @@ import { BetOptions } from '@/components/moleculus';
 
 import { useMainPage } from './useMainPage';
 import style from './MainPage.module.scss';
+import clsx from 'clsx';
 
 const MainPage = () => {
   const {
+    isAuth,
     balance,
     cubeStatus,
     rollPrice,
@@ -17,11 +19,16 @@ const MainPage = () => {
   return (
     <div className={style.container}>
       <div className={style.title}>
-        <Typography variant="title">
-          {resultRoll !== null
-            ? `Результат броска кубика: ${resultRoll}`
-            : 'Сделайте ставку'}
-        </Typography>
+        {!isAuth && (
+          <Typography variant="title">Войдите, чтобы продолжить</Typography>
+        )}
+        {isAuth && (
+          <Typography variant="title">
+            {resultRoll !== null
+              ? `Результат броска кубика: ${resultRoll}`
+              : 'Сделайте ставку'}
+          </Typography>
+        )}
         {resultGame && rollPrice && (
           <Typography className={style.subtitle}>
             {resultGame === 'win'
@@ -31,7 +38,11 @@ const MainPage = () => {
         )}
       </div>
 
-      <div className={style.cube_wrapper}>
+      <div
+        className={clsx(style.cube, {
+          [style.disabled]: !isAuth,
+        })}
+      >
         <GameCube status={cubeStatus} />
       </div>
       <div className={style.options}>
@@ -39,7 +50,7 @@ const MainPage = () => {
           className={style.options}
           onStart={handleStartClick}
           currentBalance={balance}
-          disabledOptions
+          disabledOptions={!isAuth}
         />
       </div>
     </div>

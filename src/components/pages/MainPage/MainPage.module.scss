@@ -16,7 +16,7 @@
   margin-top: 8px;
 }
 
-.cube_wrapper {
+.cube {
   width: 180px;
   height: 180px;
   margin: 60px auto 0 auto;
@@ -26,7 +26,9 @@
   border: 2px solid rgba(66, 22, 93, 1);
   border-radius: 5px;
 }
-
+.disabled {
+  opacity: 0.3;
+}
 .options {
   margin-top: 60px;
 }

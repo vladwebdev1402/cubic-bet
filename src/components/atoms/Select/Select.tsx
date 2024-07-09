@@ -9,10 +9,16 @@ import style from './Select.module.scss';
 type SelectProps = {
   cureentValue: SelectValue;
   values: SelectValue[];
+  disabled?: boolean;
   onSelect: (value: SelectValue) => void;
 };
 
-const Select: FC<SelectProps> = ({ cureentValue, values, onSelect }) => {
+const Select: FC<SelectProps> = ({
+  cureentValue,
+  values,
+  disabled,
+  onSelect,
+}) => {
   const [isOpen, setIsOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
   const handleSelectClick = (value: SelectValue) => {
@@ -39,6 +45,7 @@ const Select: FC<SelectProps> = ({ cureentValue, values, onSelect }) => {
       <button
         className={clsx(style.select, { [style.select_open]: isOpen })}
         onClick={() => setIsOpen(!isOpen)}
+        disabled={disabled}
       >
         {cureentValue.title}
         <div className={style.icon}>
@@ -49,6 +56,7 @@ const Select: FC<SelectProps> = ({ cureentValue, values, onSelect }) => {
         <div className={style.body}>
           {values.map((value) => (
             <button
+              key={value.value}
               className={style.option}
               onClick={() => handleSelectClick(value)}
             >

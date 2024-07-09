@@ -5,7 +5,7 @@ import { Input } from '@/components/atoms';
 
 import style from './AuthForm.module.scss';
 
-type AuthData = {
+export type AuthData = {
   login: string;
   password: string;
 };

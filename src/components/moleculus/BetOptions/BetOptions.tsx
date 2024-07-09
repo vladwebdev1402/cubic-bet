@@ -5,6 +5,7 @@ import { bets, buttonVariant } from './data';
 import { VariantBet } from './type';
 import { CustomBetButton } from '../CustomBetButton';
 import style from './BetOptions.module.scss';
+import clsx from 'clsx';
 
 type BetOptionsProps = {
   currentBalance: number;
@@ -43,17 +44,24 @@ const BetOptions: FC<BetOptionsProps> = ({
   return (
     <div className={className}>
       <div>
-        <Typography className={style.label} variant="paragraph_14">
+        <Typography
+          className={clsx(style.label, { [style.disabled]: disabledOptions })}
+          variant="paragraph_14"
+        >
           Размер ставки
         </Typography>
         <Select
           cureentValue={sizeBet}
           onSelect={(value) => setSizeBet(value)}
           values={bets}
+          disabled={disabledOptions}
         />
       </div>
       <div className={style.bet_variants}>
-        <Typography className={style.label} variant="paragraph_14">
+        <Typography
+          className={clsx(style.label, { [style.disabled]: disabledOptions })}
+          variant="paragraph_14"
+        >
           Варианты ставок
         </Typography>
         <div className={style.body}>
