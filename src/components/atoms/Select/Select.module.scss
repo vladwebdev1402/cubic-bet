@@ -1,0 +1,69 @@
+@import '@/styles/variables.scss';
+.container {
+  position: relative;
+}
+
+.select {
+  padding: 8px 12px;
+  border: 1px solid $gray-light;
+  border-radius: 6px;
+  font-size: 16px;
+  line-height: 24px;
+  width: 100%;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  background-color: $white;
+
+  &_open {
+    border: 1px solid rgba(56, 147, 255, 1);
+
+    .icon {
+      transform: rotate(180deg);
+    }
+  }
+}
+
+.icon {
+  height: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: $transition;
+  border: 1px solid rgba(56, 147, 255, 1);
+}
+
+.body {
+  position: absolute;
+  top: 41px;
+  background-color: $white;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  border-radius: 6px;
+}
+
+.option {
+  border: none;
+  cursor: pointer;
+  line-height: 24px;
+  font-size: 16px;
+  background-color: transparent;
+  text-align: left;
+  transition: $transition;
+  padding: 0px 12px;
+
+  &:first-child {
+    padding-top: 12px;
+  }
+
+  &:last-child {
+    padding-bottom: 12px;
+  }
+
+  &:hover {
+    background-color: $gray-light;
+  }
+}
