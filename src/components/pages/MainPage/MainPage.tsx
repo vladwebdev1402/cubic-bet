@@ -9,6 +9,7 @@ import style from './MainPage.module.scss';
 const MainPage = () => {
   const {
     isAuth,
+    isStarted,
     balance,
     cubeStatus,
     rollPrice,
@@ -53,7 +54,7 @@ const MainPage = () => {
           className={style.options}
           onStart={handleStartClick}
           currentBalance={balance}
-          disabledOptions={!isAuth}
+          disabledOptions={!isAuth || isStarted}
         />
       </div>
     </div>
