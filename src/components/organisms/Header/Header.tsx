@@ -1,8 +1,8 @@
 import { Button, Modal, Typography } from '@/components/atoms';
 import { AuthForm } from '@/components/moleculus';
 
-import style from './Header.module.scss';
 import { useHeader } from './useHeader';
+import style from './Header.module.scss';
 
 const Header = () => {
   const { state, actions } = useHeader();
@@ -32,7 +32,7 @@ const Header = () => {
             Войти
           </Button>
         </AuthForm>
-        {state.error && <div>{state.error}</div>}
+        {state.error && <div className={style.error}>{state.error}</div>}
       </Modal>
     </>
   );
