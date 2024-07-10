@@ -1,1 +1,1 @@
-Ссылка на сайт: http://localhost:3000/cubic-bet/
+Ссылка на сайт: https://vladwebdev1402.github.io/cubic-bet/
