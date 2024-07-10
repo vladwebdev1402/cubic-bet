@@ -66,3 +66,9 @@
 .stop_scroll {
   overflow: hidden;
 }
+
+@media (max-width: 568px) {
+  .body {
+    padding: 32px 16px 16px 16px;
+  }
+}

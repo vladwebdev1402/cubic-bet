@@ -1,3 +1,5 @@
+@import '@/styles/variables.scss';
+
 .header {
   padding: 10px 24px;
 }
@@ -16,4 +18,9 @@
 
 .auth_button {
   width: 100%;
+}
+
+.error {
+  color: $indicator-error;
+  margin-top: 4px;
 }

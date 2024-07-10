@@ -1,11 +1,12 @@
 import { FC, useState } from 'react';
+import clsx from 'clsx';
+
 import { Button, Select, SelectValue, Typography } from '@/components/atoms';
 
 import { bets, buttonVariant } from './data';
 import { VariantBet } from './type';
 import { CustomBetButton } from '../CustomBetButton';
 import style from './BetOptions.module.scss';
-import clsx from 'clsx';
 
 type BetOptionsProps = {
   currentBalance: number;
